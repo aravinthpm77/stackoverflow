@@ -39,7 +39,7 @@ const AskQuestion = () => {
 
 
                     </div>
-                    <input type='submit' value='Review your Question'/>
+                    <input type='submit' className='Submitbutton' value='Review your Question'/>
                 </form>
             </div>
             

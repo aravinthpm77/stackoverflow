@@ -55,3 +55,18 @@
     font-size: 15px;
     font-weight: 300;
 }
+.Submitbutton{
+    margin:20px;
+    padding:10px;
+    color:rgb(0, 0, 0);
+    background-color: #afafaf;
+    transition: .3s;
+    border: none;
+    cursor: pointer;
+    
+}
+.Submitbutton:hover{
+    color:rgb(0, 0, 0);
+    background-color: #7f7f7f;
+    scale:101%;
+}
