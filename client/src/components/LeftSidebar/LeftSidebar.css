@@ -16,7 +16,15 @@
 }
 
 
+.side-nav-links2{
+    text-decoration: none;
+    color:black;
 
+    transition: .2s;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10px;
+}
 .side-nav-links{
     text-decoration: none;
     color:black;
@@ -27,8 +35,9 @@
     padding-left: 10px;
 }
 
+
 .Questions-p{
-    
+    text-decoration: none;
     color:black;
     text-align: center;
     margin-top:-22px;
@@ -36,6 +45,7 @@
     transition: .2s;
     
 }
+
 .side-nav-links:hover{
     color: rgb(87, 87, 87);
 }
@@ -47,6 +57,7 @@
 .active{
     font-weight: bolder;
     color: rgb(45, 45, 45);
+    
     background-color: rgb(225, 225, 225);
-    border-right: solid 3px #ef8236;
+    
 }

@@ -6,7 +6,7 @@ const Avatar = ({children}) => {
    
 
     return (
-        <div  class='Avatar'>
+        <div  className='Avatar'>
             { children }
         </div>
     )
