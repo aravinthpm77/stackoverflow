@@ -109,7 +109,7 @@ const QuestionDetails = () => {
                                                     
                                                     
                                                     
-                                                        <Avatar backgroundColor='orange' px='8px' py='8px'>{question.userPosted.charAt(0).toUpperCase()}</Avatar>
+                                                        <Avatar  >{question.userPosted.charAt(0).toUpperCase()}</Avatar>
                                                 
                                                         <div>
                                                             {question.userPosted}

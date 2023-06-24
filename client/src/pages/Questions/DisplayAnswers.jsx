@@ -19,7 +19,7 @@ const DisplayAnswers = ({question}) => {
                                                     
                                                     
                                                     
-                                <Avatar backgroundColor='orange' px='8px' py='8px'>{ans.userAnswered.charAt(0).toUpperCase()}</Avatar>
+                                <Avatar >{ans.userAnswered.charAt(0).toUpperCase()}</Avatar>
                                                 
                                 <div>
                                     {ans.userAnswered}

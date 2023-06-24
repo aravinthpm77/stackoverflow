@@ -1,30 +1,62 @@
 import React,{useState} from 'react'
+import { useDispatch } from 'react-redux'
+import {useNavigate } from 'react-router-dom'
 import icon from '../../assets/logo.png'
 import AboutAuth from './AboutAuth'
 import './Auth.css'
-
+import { signup,login } from '../../actions/auth'
 const Auth = () => {
 
+
+//Server Side Code 
     const [isSignup,setIsSignup]=useState(false)
+    const [name,setName]=useState('')
+    const [email,setEmail]=useState('')
+    const [password,setPassword]=useState('') 
     const handleSwitch = () =>{
         setIsSignup(!isSignup)
     }
     
+    const dispatch = useDispatch()
+    const navigate =useNavigate()  
+
+
+    const handleSubmit =(e)=>{
+        e.preventDefault()
+        if(isSignup){
+            if(!name||!email || !password ){
+                alert("Enter Full Details to SignUP")
+            }
+            dispatch(signup({name,email,password},navigate))
+
+
+        }
+        else{
+            dispatch(login({email,password },navigate))
+        }
+        console.log({name,email,password})
+    }
+
+//Front End Code
+
     return (
         <section class='auth-section'>
             { isSignup && <AboutAuth/> }
             <div class='auth-container'>
                 { !isSignup && <img src={icon} alt='stack overflow'></img>}
-                <form>
-                    { isSignup && 
-                    <label htmlFor='Display'>
-                        <h4>Display</h4>
-                        <input type="text" name="name" id="Display" placeholder='Name to Display..'/>
-                    </label>}
+                <form onSubmit={handleSubmit}>
+                    { 
+                        isSignup && (
+                        <label htmlFor='name'>
+                            <h4>Display</h4>
+                            <input type="text" name="name" id="Display" placeholder='Name to Display..' onChange={(e)=>{setName(e.target.value)}}/>
+                        </label>
+                        )
+                    }
 
                     <label htmlFor='email'>
                         <h4>Email</h4>
-                        <input type="email" name="email" id="email" placeholder='Email..'/>
+                        <input type="email" name="email" id="email" placeholder='Email..' onChange={(e)=>{setEmail(e.target.value)}}/>
                     </label>
 
                     <label htmlFor='password'>
@@ -37,7 +69,7 @@ const Auth = () => {
                             </p>}
                         </div>
                         
-                        <input type="password" name="password" id="password" placeholder='Password..'/>
+                        <input type="password" name="password" id="password" placeholder='Password..' onChange={(e)=>{setPassword(e.target.value)}}/>
 
                         {isSignup && 
                         <p style={{color:"#666767",fontSize:"13px"}}>Password Must Contain atleast 8 characters 
