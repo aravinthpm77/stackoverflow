@@ -32,6 +32,9 @@ const Auth = () => {
 
         }
         else{
+            if(!email || !password ){
+                alert("Enter Full Details to LogIn")
+            }
             dispatch(login({email,password },navigate))
         }
         console.log({name,email,password})

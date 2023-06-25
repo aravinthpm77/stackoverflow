@@ -1,14 +1,20 @@
-import React from "react"
+import React,{useEffect} from "react"
 import {Link} from 'react-router-dom'
 import logo from '../../assets/logo.png'
 import search from '../../assets/search.svg'
 import Avatar from '../Avatar/Avatar'
 import './Navbar.css'
+import {useSelector,useDispatch} from 'react-redux'
+import { setCurrentUser } from "../../actions/currentuser"
 
 
 const Navbar = () => {
+    const dispatch =useDispatch()
+    var User = useSelector((state)=>(state.currentUserReducer))
 
-    var User = null
+    useEffect(()=>{
+        dispatch(setCurrentUser(JSON.parse(localStorage.getItem('Profile'))))
+    },[dispatch])
 
     return(
         <nav className="main-nav">

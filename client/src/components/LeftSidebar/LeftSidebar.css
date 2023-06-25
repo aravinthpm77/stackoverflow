@@ -15,11 +15,13 @@
     margin-top:50px ;
 }
 
-
+.side-nav-links2:active{
+    background-color: aliceblue;
+}
 .side-nav-links2{
     text-decoration: none;
     color:black;
-
+    
     transition: .2s;
     align-items: center;
     justify-content: flex-start;
