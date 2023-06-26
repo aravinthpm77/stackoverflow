@@ -20,4 +20,3 @@ root.render(
     </React.StrictMode>
   </Provider>
 );
-
