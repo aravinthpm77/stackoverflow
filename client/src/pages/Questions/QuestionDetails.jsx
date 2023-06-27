@@ -1,21 +1,44 @@
 
-import React from 'react'
-import { useParams } from 'react-router-dom'
+import React,{useState} from 'react'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import upvote from '../../assets/sort-up.svg'
 import downvote from '../../assets/sort-down.svg'
 import {Link} from 'react-router-dom'
 import Avatar from '../../components/Avatar/Avatar'
 import './Questions.css'
 import DisplayAnswers from './DisplayAnswers'
+import  {postAnswer}from '../../actions/question'
+
+
 const QuestionDetails = () => {
 
     const{ id } = useParams()
     const questionsList=useSelector(state=>state.questionsReducer)
     
     console.log(id)
-
+    const Dispatch = useDispatch()
     
+    const Navigate = useNavigate()
+    const [Answer,setAnswer]=useState("")
+    const User=useSelector((state)=>(state.currentUserReducer))
+    const handlePostAns   = (e,answerLength) =>{
+        e.preventDefault()
+        if(User===null){
+            alert("Login or SignUp to Answer")
+            Navigate('/Auth')
+        }else{
+            if(Answer ===''){
+                alert('Enter an Answer before Submit')
+            }
+            else{
+                Dispatch(postAnswer({id, noOfAnswers:answerLength+1, answerBody: Answer, userAnswered: User.result.name}) )
+            }
+        }
+    }
+    
+
     return (
         <div className='question-details-page'>
             {
@@ -40,6 +63,7 @@ const QuestionDetails = () => {
                                             <p className='question-body'>{question.questionBody}</p>
                                             <div className="question-details-tags">
                                                 {
+                                                   
                                                     question.questionTag.map((tag)=>(
                                                         <p key={tag}>{tag}</p>
                                                     ))
@@ -78,8 +102,9 @@ const QuestionDetails = () => {
                                 }
                                 <section className='post-ans-container'>
                                     <h3>Your Answers</h3>
-                                    <form>
-                                        <textarea name="" id=""  cols="20" rows="5"> </textarea>
+
+                                    <form onSubmit={ (e)=> {handlePostAns(e,question.answer.length )  }}>
+                                        <textarea name="" id=""  cols="15" rows="7" onChange={e=>setAnswer(e.target.value)} > </textarea>
                                         <input type="submit" className='post-ans-btn' value='Post Your Answer'/> 
                                     </form>
                                     <p>

@@ -32,7 +32,7 @@ const Navbar = () => {
                 { User === null ?
                     <Link to='/Auth' className='nav-item nav-links'>Log in</Link> :
                     <>
-                        <Link to="/User"><Avatar>A</Avatar></Link>
+                        <Link to="/User"><Avatar>{User.result.name.charAt(0).toUpperCase()}</Avatar></Link>
                         <button className="nav-item nav-links">Log Out</button>
 
                     </>
